@@ -31,6 +31,7 @@ class PostController extends Controller
 
 		// $posts = (new \App\Repositories\Posts)->all();
 
+
 		$posts = Post::latest()
 
 		->filter(request(['month','year']))
@@ -66,6 +67,8 @@ class PostController extends Controller
 				new Post(request(['title','body']))
 
 			);
+
+			session()->flash('message','Your Post has been published!');
 
 
 			return redirect('/');

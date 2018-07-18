@@ -11,8 +11,6 @@
 |
 */
 
-// App::bind('App\Billing\Stripe')
-
 Route::get('/', 'PostController@index')->name('home');
 
 Route::get('/posts/edit/{post}', 'PostController@edit');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 
+use App\Mail\Welcome;
+
 class RegistrationController extends Controller
 {
     //
@@ -20,26 +22,32 @@ class RegistrationController extends Controller
 
         	$this->validate(request(),
 
-        		[
-				'name' => 'required',
+        	[
+			'name' => 'required',
 
         	'email' => 'required|email',
 
         	'password' => ' required|confirmed'
 
-
-        		]
-
+       		]
 
         	);
 
         	$user = User::create([ 
-'name' => request('name'),
-'email' => request('email'),
-'password' => bcrypt(request('password'))
-]);
+            
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+            
+            ]);
 
         	auth()->login($user);
+
+            \Mail::to($user)->send(new Welcome($user));
+
+            // session('message','Here is a default message');
+
+            session()->flash('message','Thanks so much for signing up!');
 
         	return redirect()->home();
 
