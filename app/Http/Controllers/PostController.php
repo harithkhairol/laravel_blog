@@ -23,15 +23,6 @@ class PostController extends Controller
 	public function index(){
 
 
-		 // $posts = $posts->latest();
-
-		// dd($posts);
-
-		 // $posts = $posts->all();
-
-		// $posts = (new \App\Repositories\Posts)->all();
-
-
 		$posts = Post::latest()
 
 		->filter(request(['month','year']))

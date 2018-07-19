@@ -63,4 +63,13 @@ public static function archives()
 
 }
 
+public function tags()
+{
+
+	return $this->belongsToMany(Tag::class);
+
+}
+
+
+
 }

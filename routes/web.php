@@ -26,6 +26,8 @@ Route::get('/posts/delete/{post}', 'PostController@delete');
 
 Route::get('/posts/{post}', 'PostController@show');
 
+Route::get('posts/tags/{tag}', 'TagsController@index');
+
 
 Route::post('/posts/{post}/comments','CommentsController@store');
 
