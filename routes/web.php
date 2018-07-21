@@ -16,13 +16,14 @@ Route::get('/', 'PostController@index')->name('home');
 Route::get('/posts/edit/{post}', 'PostController@edit');
 
 Route::get('/posts/create', 'PostController@create');
-
+ 
 Route::post('/posts','PostController@store');
 
 Route::patch('/editPost/{post}','PostController@postEdit');
 
 Route::get('/posts/delete/{post}', 'PostController@delete');
 
+Route::get('/posts', 'PostController@postlist');
 
 Route::get('/posts/{post}', 'PostController@show');
 

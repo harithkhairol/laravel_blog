@@ -126,4 +126,19 @@ class PostController extends Controller
 
 	}
 
+	public function postlist(){
+
+		$posts = Post::latest()
+
+		->filter(request(['month','year']))
+
+		->get();
+
+
+
+		return view('posts.postlist', compact('posts'));
+
+
+	}
+
 }
